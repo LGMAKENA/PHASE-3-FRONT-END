@@ -71,7 +71,8 @@ function App() {
           />
         )}
       </div>
-    {!displayAddForm && selectedFriend &&   <Table bills={bills}/>}
+    {!displayAddForm && selectedFriend &&  
+     (<Table bills={bills} selectedFriend={selectedFriend}/>)}
 
     </div>
   );

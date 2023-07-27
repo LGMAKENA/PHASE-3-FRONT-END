@@ -1,41 +1,37 @@
+function Table({ bills, setSelectedFriend }) {
+  async function deleteHandler(id) {
+    const res = await fetch('http://127.0.0.1:9292/bills/' + id, {
+      method: 'DELETE',
+    });
 
-function Table({bills}) {
-    // const [bills, setBills] = useState([])
-    // useEffect(function(){
-    //     async function fetchBills() {
-    //         const res = await fetch('http://127.0.0.1:9292/friends/'+friendId);
-    //         const data = await res.json();
-    //         setBills(data);
-    //       }
-      
-    //       fetchBills();
-    // },[friendId]);
+    if (!res.ok) return;
+    setSelectedFriend();
+  }
 
-    console.log (bills)
   return (
-    <table className="table-auto">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Bill Amount</th>
-                <th>Balance</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-      {bills?.map(bill => (
+    <table>
+      <thead>
+        <tr>
+          <th>Bill Date</th>
+          <th>Bill Amount</th>
+          <th>Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {bills?.map(bill => (
           <tr key={bill.id}>
-          <td>{bill.bill_date}</td>
-          <td>{bill.bill_amount}</td>
-          <td>{bill.balance}</td>
-          <td>
-            <button>Delete</button>
-          </td>
-      </tr>
-      ))}
-        </tbody>
+            <th>{bill.bill_date}</th>
+            <th>{bill.bill_amount}</th>
+            <th>{bill.balance}</th>
+            <th>
+              <button onClick={() => deleteHandler(bill.id)}>Delete</button>
+            </th>
+          </tr>
+        ))}
+      </tbody>
     </table>
-  )
+  );
 }
 
-export default Table
+export default Table;
