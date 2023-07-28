@@ -72,7 +72,7 @@ function App() {
         )}
       </div>
     {!displayAddForm && selectedFriend &&  
-     (<Table bills={bills} selectedFriend={selectedFriend}/>)}
+     (<Table bills={bills}  setSelectedFriend={setSelectedFriend}/>)}
 
     </div>
   );

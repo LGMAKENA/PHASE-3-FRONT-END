@@ -6,6 +6,7 @@ function Table({ bills, setSelectedFriend }) {
 
     if (!res.ok) return;
     setSelectedFriend();
+    window.location.reload ()
   }
 
   return (
